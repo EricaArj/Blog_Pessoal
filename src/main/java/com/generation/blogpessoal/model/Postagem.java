@@ -6,30 +6,38 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
-@Entity
-@Table(name = "tb_postagens")
-public class Postagem {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@Entity
+@Table(name = "tb_postagem")
+public class Postagem {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message ="O atributo Titulo é Obrigatorio!")
-	@Size (min =5,max =100,message =" O atributo Titulo deve conter no minimo o 5 e no máximo 100 caracteres")
+	@NotBlank(message = "O atributo título é obrigatorio!")
+	@Size (min = 5, max = 100, message = "O atributo título  deve conter no mínino 05 e mo máximo 100 caracteres")
 	private String titulo;
 	
-	@NotBlank(message ="O atributo Texto é Obrigatorio!")
-	@Size (min =10,max =1000,message =" O atributo Texto deve conter no minimo o 10 e no máximo 1000 caracteres")
+	@NotBlank(message = "O atributo texto é obrigatorio!")
+	@Size (min = 10, max = 1000, message = "O atributo texto  deve conter no mínino 10 e mo máximo 1000 caracteres")
 	private String texto;
 	
 	@UpdateTimestamp
 	private LocalDateTime data;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Tema tema;
+
 	
 
 	public Long getId() {
@@ -64,5 +72,14 @@ public class Postagem {
 		this.data = data;
 	}
 	
-	
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+		
+
+
 }
