@@ -23,11 +23,11 @@ import org.springframework.web.server.ResponseStatusException;
 import com.generation.blogpessoal.model.Postagem;
 import com.generation.blogpessoal.repository.PostagemRepository;
 import com.generation.blogpessoal.repository.TemaRepository;
+import com.generation.blogpessoal.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping("/postagens")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-
 public class PostagemController {
 
 	@Autowired
@@ -35,6 +35,9 @@ public class PostagemController {
 
 	@Autowired
 	private TemaRepository temaRepository;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	@GetMapping
 	public ResponseEntity<List<Postagem>> getAll() {
@@ -56,7 +59,7 @@ public class PostagemController {
 
 	@PostMapping
 	public ResponseEntity<Postagem> post(@Valid @RequestBody Postagem postagem) {
-		if (temaRepository.existsById(postagem.getTema().getId()))
+		if (temaRepository.existsById(postagem.getTema().getId())) 
 			return ResponseEntity.status(HttpStatus.CREATED).body(postagemRepository.save(postagem));
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	}
