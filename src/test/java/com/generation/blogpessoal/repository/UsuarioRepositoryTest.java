@@ -31,10 +31,10 @@ public class UsuarioRepositoryTest {
 	@BeforeAll
 	void start() {
 		usuarioRepository.deleteAll();
-		usuarioRepository.save(new Usuario(0L, "João da siva","joão@email.com.br", "12345678","https://th.bing.com/th/id/R.d4118afa404426447027f70cd4911d56?rik=PMDvdZl93NsoSw&pid=ImgRaw&r=0"));
-		usuarioRepository.save(new Usuario(0L, "Maria da siva","maria@email.com.br", "12345678","https://curiosidadescuriosas.com/wp-content/uploads/2012/12/Fotografia-de-Paisaje-Natural-10.jpg"));
-		usuarioRepository.save(new Usuario(0L, "Anna da siva","anna@email.com.br", "12345678","https://th.bing.com/th/id/OIP.lywnb4QeupFAlIt1p_QHVQHaEo?pid=ImgDet&rs=1"));
-		usuarioRepository.save(new Usuario(0L, "Erica da siva","erica@email.com.br", "12345678","https://th.bing.com/th/id/OIP.yfnjgVDJPCR8caV7Bz1AdQHaEo?pid=ImgDet&w=474&h=296&rs=1"));
+		usuarioRepository.save(new Usuario(0L, "João da silva","joão@email.com.br", "12345678","https://th.bing.com/th/id/R.d4118afa404426447027f70cd4911d56?rik=PMDvdZl93NsoSw&pid=ImgRaw&r=0"));
+		usuarioRepository.save(new Usuario(0L, "Maria da silva","maria@email.com.br", "12345678","https://curiosidadescuriosas.com/wp-content/uploads/2012/12/Fotografia-de-Paisaje-Natural-10.jpg"));
+		usuarioRepository.save(new Usuario(0L, "Anna da silva","anna@email.com.br", "12345678","https://th.bing.com/th/id/OIP.lywnb4QeupFAlIt1p_QHVQHaEo?pid=ImgDet&rs=1"));
+		usuarioRepository.save(new Usuario(0L, "Erica silva","erica@email.com.br", "12345678","https://th.bing.com/th/id/OIP.yfnjgVDJPCR8caV7Bz1AdQHaEo?pid=ImgDet&w=474&h=296&rs=1"));
 	
 	}
 		
@@ -47,14 +47,15 @@ public class UsuarioRepositoryTest {
 		
 	}
 		@Test
-		@DisplayName("Retorna 3 usuario")
+		@DisplayName("Retorna 4 usuario")
 		public void deveRetornarTresUsuarios() {
 			
 			List<Usuario> listaDeUsuarios = usuarioRepository.findAllByNomeContainingIgnoreCase("silva");
-		assertEquals(3, listaDeUsuarios.size());
-		assertTrue(listaDeUsuarios.get(0).getNome().equals("João silva"));
-		assertTrue(listaDeUsuarios.get(1).getNome().equals("Maria silva"));
-		assertTrue(listaDeUsuarios.get(2).getNome().equals("Anna silva"));
+		assertEquals(4, listaDeUsuarios.size());
+		assertTrue(listaDeUsuarios.get(0).getNome().equals("João da silva"));
+		assertTrue(listaDeUsuarios.get(1).getNome().equals("Maria da silva"));
+		assertTrue(listaDeUsuarios.get(2).getNome().equals("Anna da silva"));
+		assertTrue(listaDeUsuarios.get(3).getNome().equals("Erica silva"));
 		
 		}
 		
