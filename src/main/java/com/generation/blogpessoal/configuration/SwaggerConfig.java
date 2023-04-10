@@ -15,23 +15,22 @@ import io.swagger.v3.oas.models.responses.ApiResponses;
 @Configuration
 public class SwaggerConfig {
 
-
 	@Bean
 	public OpenAPI springBlogPessoalOpenAPI() {
 		return new OpenAPI()
 				.info(new Info()
 					.title("Projeto Blog Pessoal")
-					.description("Projeto Blog Pessoal - EricaArj")
+					.description("Projeto Blog Pessoal - Generation Brasil")
 					.version("v0.0.1")
 				.license(new License()
-					.name("Erica Araújo")
-					.url("https://github.com/EricaArj"))
+					.name("Repositorio Blog Pessoal")
+					.url("https://github.com/Wall90s/projetoSpring-blogPessoal"))
 				.contact(new Contact()
-					.name("Conteudo Projeto")
-					.url("https://github.com/EricaArj/Blog_Pessoal")
-					.email("erika.f55@hotmail.com")))
+					.name("Wallace S Brito")
+					.url("https://www.linkedin.com/in/wallacesb/")
+					.email("wallacesilvabrito@gmail.com")))
 				.externalDocs(new ExternalDocumentation()
-					.description("Github")
+					.description("Generation Brasil")
 					.url("https://github.com/conteudoGeneration/"));
 	}
 
